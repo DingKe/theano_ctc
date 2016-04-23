@@ -1,3 +1,19 @@
+Add cost_objective() for easy integrated into deep learning framework such as [keras](http://keras.io).
+
+## Usage
+Use the ctc_objective() function like any other Theano Op:
+
+    from theano_ctc import ctc_objective
+    import theano.tensor as T
+
+    costs = ctc_objective(labels, acts)
+    grad = T.grad(T.mean(costs), acts)
+
+ctc_objective assumes that all sentences have the same length of acts (by sorting and padding) and labels (by padding -1).
+See the test_ctc3.py for a working example.
+
+original README
+
 # theano_ctc 
 Theano bindings for Baidu's CTC library. Supports CPU and GPU computation.
 
